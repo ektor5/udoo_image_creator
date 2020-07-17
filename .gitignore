@@ -1,0 +1,4 @@
+rootfs/
+mnt/
+*.img
+*.log

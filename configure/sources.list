@@ -1,7 +1,7 @@
-deb http://ports.ubuntu.com/ubuntu-ports/ bionic main universe multiverse
-deb http://ports.ubuntu.com/ubuntu-ports/ bionic-updates main universe multiverse
-deb http://ports.ubuntu.com/ubuntu-ports/ bionic-security main universe multiverse
+deb http://ports.ubuntu.com/ubuntu-ports/ focal main universe multiverse
+deb http://ports.ubuntu.com/ubuntu-ports/ focal-updates main universe multiverse
+deb http://ports.ubuntu.com/ubuntu-ports/ focal-security main universe multiverse
 
-#deb-src http://ports.ubuntu.com/ubuntu-ports/ bionic main universe multiverse
-#deb-src http://ports.ubuntu.com/ubuntu-ports/ bionic-updates main universe multiverse
-#deb-src http://ports.ubuntu.com/ubuntu-ports/ bionic-security main universe multiverse
+#deb-src http://ports.ubuntu.com/ubuntu-ports/ focal main universe multiverse
+#deb-src http://ports.ubuntu.com/ubuntu-ports/ focal-updates main universe multiverse
+#deb-src http://ports.ubuntu.com/ubuntu-ports/ focal-security main universe multiverse

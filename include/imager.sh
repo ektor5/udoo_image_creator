@@ -20,7 +20,7 @@ function create_partitions() {
     ROOTSTART=$(($OFFSET*2048))
 
     # Partitions name
-    local LABELFS="udoobuntu18_04"
+    local LABELFS="udoobuntu20_04"
 
     # Create image partitions (spaces and filesystems)
     echo "Creating image partitions..."
@@ -45,19 +45,17 @@ function write_bootloader() {
 
 function write_kernel() {
     # Read arguments
-    local OUTPUT=$1
-    local LOOP=$2
+    local DIR=$1
 
     echo "Writing kernel and modules (version 4.14.78)"
     # Copy the image and the device tree (binary file)
-    mkdir mnt/boot/dtbs
-    cp $DIR_IMAGER/../source/kernel/zImage mnt/boot
-    cp $DIR_IMAGER/../source/kernel/dtbs/*.dtb mnt/boot/dtbs
+    mkdir -p $DIR/boot/dtbs
+    cp $DIR_IMAGER/../source/kernel/zImage $DIR/boot
+    cp $DIR_IMAGER/../source/kernel/dtbs/*.dtb $DIR/boot/dtbs
 
     # Copy the modules
-    mkdir mnt/lib
-    mkdir mnt/lib/modules
-    cp -r $DIR_IMAGER/../source/kernel/modules/* mnt/lib/modules
+    mkdir -p $DIR/lib/modules
+    cp -r $DIR_IMAGER/../source/kernel/modules/* $DIR/lib/modules
 
     echo_ok "Writing kernel and modules: Done!"
 }
