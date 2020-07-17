@@ -18,6 +18,7 @@ sudo ./udoo_image_create_v2.sh
 ## Development setup
 
 This script requires:
+
     - debootsrap
     - qemu-debootstrap
     - qemu-arm-static
