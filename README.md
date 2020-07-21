@@ -25,6 +25,7 @@ This script requires:
 
 ## WIP/Not working
     - Display LVDS
+    - OTG
 
 ## Release History
 
@@ -37,7 +38,7 @@ This script requires:
 
 ## Meta
 
-Tommaso Perondi – [@YourTwitter](https://twitter.com/dbader_org) – tommaso.perondi@delirium.dev
+Tommaso Perondi – tommaso.perondi@delirium.dev
 
 Distributed under the GNU General Public License v3.0 license.
 
