@@ -23,6 +23,9 @@ This script requires:
     - qemu-debootstrap
     - qemu-arm-static
 
+## WIP/Not working
+    - Display LVDS
+
 ## Release History
 
 
