@@ -35,6 +35,15 @@ This script requires:
 * 0.1.0
     * Image creator for Ubuntu 18.04
 
+## Sources
+
+This script contains pre-compiled binaries, the sources are available here:
+
+    U-boot:
+        * https://github.com/UDOOboard/uboot-imx/tree/2015.04.imx-20.04
+    Kernel:
+        * https://github.com/UDOOboard/linux-imx-udoo.git
+
 
 ## Meta
 
