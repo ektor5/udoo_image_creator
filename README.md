@@ -12,7 +12,7 @@ To execute this script you only have to clone this repository and run the main s
 ## Usage example
 
 ```sh
-sudo ./udoo_image_create.sh
+sudo ./udoo_image_creator.sh
 ```
 
 ## Development setup
