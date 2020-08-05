@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Script for the realization of the SDcard image and its configuration
-#set -e
+set -e
 
 # Included files
 DIR_MKUDOOBUNTU=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
