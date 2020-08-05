@@ -83,10 +83,13 @@ function configuration() {
     install -m 755 patches/firstrun  "./${MNTDIR}/etc/init.d"
     chroot "${MNTDIR}/" /bin/bash -c "update-rc.d firstrun defaults > /dev/null 2>&1"
     cp patches/g_multi_setup.sh "./${MNTDIR}/etc/rc.local"
+    cp patches/usbcon.service"./${MNTDIR}/etc/systemd/system/"
+    cp patches/usbconsole.rules "./${MNTDIR}/etc/udev/rules.d/90-usbconsole.rules"
     chmod +x "./${MNTDIR}/etc/rc.local"
 
     echo_i "Configuring Network ..."
     cp patches/network_interface "./${MNTDIR}/etc/netplan/01-network-manager-all.yaml"
+    cp patches/dhcpd.conf "./${MNTDIR}/etc/dhcp/"
     # Setup the user and root - from include/set_user_and_root.sh
     set_root
     set_user

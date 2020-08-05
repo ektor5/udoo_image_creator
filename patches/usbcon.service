@@ -1,0 +1,13 @@
+[Unit]
+Description=USB console on ttyGS0
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+
+ExecStart=/bin/systemctl start serial-getty@ttyGS0.service
+
+ExecStop=/bin/systemctl stop serial-getty@ttyGS0.service
+
+[Install]
+WantedBy=getty.target

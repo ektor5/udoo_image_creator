@@ -1,0 +1,1 @@
+ACTION=="add", KERNEL=="ttyGS0", TAG+="systemd", ENV{SYSTEMD_WANTS}="usbcon.service"

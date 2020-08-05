@@ -1,10 +1,9 @@
 #!/bin/bash
 
-# Script fot update and install the packages and programs
+# Script for updating and installing packages
 
 # Included script
 
-LOG_FILE_PATH="log/out.log"
 DIR_PACKAGES=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 source "$DIR_PACKAGES/utils/prints.sh"
 ################################################################################
@@ -38,7 +37,10 @@ function install_packages() {
     chroot "${MNTDIR}/" /bin/bash -c "apt-get upgrade -y"
 
     # # Packages list
-    local base_packages="openssh-server ifupdown haveged policykit-1 curl iw network-manager ntp unzip usbutils wireless-tools wget wpasupplicant sysfsutils git i2c-tools python3-pip manpages wireless-regdb net-tools ca-certificates gnupg-agent linux-firmware vim bluez bluez-tools"
+    local base_packages="openssh-server ifupdown haveged policykit-1 curl iw \
+    network-manager ntp unzip usbutils wireless-tools wget wpasupplicant \
+    sysfsutils git i2c-tools python3-pip manpages wireless-regdb net-tools \
+    ca-certificates gnupg-agent linux-firmware vim bluez bluez-tools isc-dhcp-server"
 
     echo_i "Installing basic packages..."
     chroot "${MNTDIR}/" /bin/bash <<EOF
