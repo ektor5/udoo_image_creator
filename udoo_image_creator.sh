@@ -103,7 +103,9 @@ function create_image(){
     dd if=/dev/zero of=$OUTPUT bs=1 count=0 seek="${IMGSIZE}G" 2>&1 > /dev/null
     echo_ok "Image created!"
     # Associate loop-device with .img file
-    losetup $LOOP $OUTPUT || echo_red "Cannot set $LOOP"
+    losetup $LOOP $OUTPUT
+    trap "clean $LOOP" INT TERM KILL
+
     # Create the partitions - from include/imager.sh
     create_partitions $OUTPUT $LOOP
     # Copy the bootloader - from include/imager.sh
@@ -143,8 +145,6 @@ function main() {
     check_dependencies "debootstrap"
     check_dependencies "qemu-arm-static"
     create_image
-
-    trap "clean $LOOP" INT TERM KILL
 
     echo_i "Starting build..."
     bootstrap $OUTPUT $LOOP
