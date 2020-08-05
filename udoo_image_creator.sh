@@ -104,7 +104,6 @@ function create_image(){
     echo_ok "Image created!"
     # Associate loop-device with .img file
     losetup $LOOP $OUTPUT
-    trap "clean $LOOP" INT TERM KILL
 
     # Create the partitions - from include/imager.sh
     create_partitions $OUTPUT $LOOP
@@ -127,7 +126,10 @@ function clean() {
         umount -R $MNTDIR
         rmdir $MNTDIR
     fi
-    losetup -d "$LOOP"
+    if [ -e "$LOOP" ]
+    then
+	    losetup -d "$LOOP"
+    fi
     sync
 
     echo_ok "Cleaned successfully"
@@ -139,6 +141,7 @@ function main() {
     # Configuration
     local OUTPUT="udoobuntu-udoo_neo-20.04_$(date +%Y%m%d-%H%M).img"
     local LOOP=$(losetup -f)
+    trap "clean $LOOP" INT TERM EXIT KILL
 
     echo_i "Check dependencies..."
     check_env
