@@ -109,6 +109,9 @@ function create_image(){
     # Copy the bootloader - from include/imager.sh
     write_bootloader $OUTPUT $LOOP
     echo_e "$LOOP $MNTDIR"
+
+    mkdir -p "$MNTDIR"
+
     mount "${LOOP}p1" $MNTDIR
     read -p "Press any key to resume ..."
 }
@@ -117,10 +120,10 @@ function clean() {
     # Read arguments
     local LOOP=$1
 
-    if [ -d $MNTDIR ]
+    if $(mountpoint -q "$MNTDIR")
     then
-        umount  $MNTDIR
-        rm -rf $MNTDIR
+        umount -R $MNTDIR
+        rmdir $MNTDIR
     fi
     losetup -d "$LOOP"
     sync
