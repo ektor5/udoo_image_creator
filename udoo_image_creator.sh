@@ -89,7 +89,7 @@ function configuration() {
 
     echo_i "Configuring Network ..."
     install -m 644 patches/network_interface "./${MNTDIR}/etc/netplan/01-network-manager-all.yaml"
-    install -m 644 patches/dhcpd.conf "./${MNTDIR}/etc/dhcp/"
+    install -m 644 patches/udhcpd.conf "./${MNTDIR}/etc/"
     # Setup the user and root - from include/set_user_and_root.sh
     set_root
     set_user
