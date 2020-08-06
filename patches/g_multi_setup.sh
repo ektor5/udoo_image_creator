@@ -38,7 +38,7 @@ root_drive="$(cat /proc/cmdline | sed 's/ /\n/g' | grep root= | awk -F 'root=' '
 g_network="iSerialNumber=${SerialNumber} iManufacturer=${Manufacturer} "
 g_network+="iProduct=${Product} host_addr=${host_addr} dev_addr=${dev_addr}"
 
-g_drive="cdrom=0 ro=0 stall=0 removable=1 nofua=1"
+g_drive="cdrom=0 ro=1 stall=0 removable=1 nofua=1"
 
 boot_drive="${root_drive%?}1"
 modprobe g_multi file=${boot_drive} ${g_drive} ${g_network} || true
