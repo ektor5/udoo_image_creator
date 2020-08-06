@@ -35,8 +35,7 @@ dev_addr=${dev_vend}:${address}
 unset root_drive
 root_drive="$(cat /proc/cmdline | sed 's/ /\n/g' | grep root= | awk -F 'root=' '{print $2}' || true)"
 
-
-g_network="iSerialNumber=${SerialNumber} iManufacturer=${Manufacturer}"
+g_network="iSerialNumber=${SerialNumber} iManufacturer=${Manufacturer} "
 g_network+="iProduct=${Product} host_addr=${host_addr} dev_addr=${dev_addr}"
 
 g_drive="cdrom=0 ro=0 stall=0 removable=1 nofua=1"
