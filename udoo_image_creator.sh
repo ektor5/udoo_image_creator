@@ -112,9 +112,7 @@ function create_image(){
     echo_e "$LOOP $MNTDIR"
 
     mkdir -p "$MNTDIR"
-
     mount "${LOOP}p1" $MNTDIR
-    read -p "Press any key to resume ..."
 }
 
 function clean() {
