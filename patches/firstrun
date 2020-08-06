@@ -55,8 +55,7 @@ regenerate_ssh_keys(){
 on_background(){
   sleep 10
   regenerate_ssh_keys
-  systemctl enable isc-dhcp-server
-  systemctl disable isc-dhcp-server6
+  systemctl enable g_multi
   echo "Removing firstrun script"
   update-rc.d -f firstrun remove >/dev/null 2>&1
   sync

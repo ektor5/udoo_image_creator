@@ -1,0 +1,11 @@
+[Unit]
+Description=OTG Gadget configuration service 
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+
+ExecStart=/usr/sbin/g_multi_setup.sh
+
+[Install]
+WantedBy=multi-user.target

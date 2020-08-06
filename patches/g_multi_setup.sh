@@ -1,21 +1,14 @@
 #!/bin/bash
 #
-# rc.local
+# Based on g_multi script from RobertCNelson 
 #
-# This script is executed at the end of each multiuser runlevel.
-# Make sure that the script will "exit 0" on success or any other
-# value on error.
-#
-# In order to enable or disable this script just change the execution
-# bits.
-# Author: Stefano Viola
 
 H=`cat /sys/fsl_otp/HW_OCOTP_CFG0 |sed -e 's/0x//'`
 L=`cat /sys/fsl_otp/HW_OCOTP_CFG1 |sed -e 's/0x//'`
 SerialNumber=$H$L
 SerialNumber=${SerialNumber^^}
 Manufacturer="SECO-AIDILAB"
-Product="UDOONEO"
+Product="UDOO-NEO"
 
 #host_addr/dev_addr
 #Should be "constant" for a particular unit, if not specified g_multi/g_ether will
@@ -48,10 +41,11 @@ g_network+="iProduct=${Product} host_addr=${host_addr} dev_addr=${dev_addr}"
 
 g_drive="cdrom=0 ro=0 stall=0 removable=1 nofua=1"
 
-                #serial:
-                #modprobe g_serial || true
 boot_drive="${root_drive%?}1"
-modprobe g_multi file=${boot_drive} ${g_drive} ${g_network}
+modprobe g_multi file=${boot_drive} ${g_drive} ${g_network} || true
 
-exit 0
-
+if [ -f /usr/sbin/udhcpd ] ; then
+	#allow g_multi/g_ether/g_serial to load...
+	sleep 1
+	/usr/sbin/udhcpd -S /etc/udhcpd.conf
+fi

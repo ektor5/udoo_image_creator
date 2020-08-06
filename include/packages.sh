@@ -40,7 +40,7 @@ function install_packages() {
     local base_packages="openssh-server ifupdown haveged policykit-1 curl iw \
     network-manager ntp unzip usbutils wireless-tools wget wpasupplicant \
     sysfsutils git i2c-tools python3-pip manpages wireless-regdb net-tools \
-    ca-certificates gnupg-agent linux-firmware vim bluez bluez-tools isc-dhcp-server"
+    ca-certificates gnupg-agent linux-firmware vim bluez bluez-tools udhcpd"
 
     echo_i "Installing basic packages..."
     chroot "${MNTDIR}/" /bin/bash <<EOF
