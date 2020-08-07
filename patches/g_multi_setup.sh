@@ -20,6 +20,9 @@ Product="UDOO-NEO"
 host_vend="4e:71:9d"
 dev_vend="4e:71:9e"
 
+usb0_address="192.168.7.2"
+usb0_netmask="255.255.255.252"
+
 if [ -f /sys/class/net/eth0/address ]; then
         #concatenate a fantasy vendor with last 3 digit of onboard eth mac
         address=$(cut -d: -f 4- /sys/class/net/eth0/address)
@@ -46,5 +49,9 @@ modprobe g_multi file=${boot_drive} ${g_drive} ${g_network} || true
 if [ -f /usr/sbin/udhcpd ] ; then
 	#allow g_multi/g_ether/g_serial to load...
 	sleep 1
+
+	#need to bring up the interface before udhcpd
+	/sbin/ifconfig usb0 ${usb0_address} netmask ${usb0_netmask} || true
+
 	/usr/sbin/udhcpd -S /etc/udhcpd.conf
 fi
