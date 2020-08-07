@@ -56,6 +56,7 @@ on_background(){
   sleep 10
   regenerate_ssh_keys
   systemctl enable g_multi
+  systemctl start g_multi
   echo "Removing firstrun script"
   update-rc.d -f firstrun remove >/dev/null 2>&1
   sync
